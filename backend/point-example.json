@@ -1,0 +1,14 @@
+{
+    "name": "Mercado Seu Zé",
+    "email": "contato@bento.com.br",
+    "whatsapp": "47999284859",
+    "latitude": "-46.81273213",
+    "longitude": "-35.19238112",
+    "city": "Ribeirão Preto",
+    "uf": "SP",
+    "items": [
+        1,
+        3,
+        6
+    ]
+}

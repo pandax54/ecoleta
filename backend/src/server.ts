@@ -2,6 +2,7 @@ import express, { request, response } from 'express';
 import cors from 'cors';
 import router from './routes';
 import path from 'path';
+import { errors } from 'celebrate';
 
 const app = express();
 
@@ -16,6 +17,8 @@ app.use('/', router)
 // ex: http://localhost:3333/uploads/lampadas.svg e irá acessar a imagem dentro da pasta com esse nome
 app.use('/uploads', express.static(path.resolve(__dirname, '..', 'uploads')))
 
+// aula 05 51:00
+app.use(errors());
 
 app.listen(3333);
 

@@ -25,7 +25,9 @@ class PointsController {
             .distinct()
             .select('points.*');
 
-        console.log(city, uf, items)
+        // const serializedPoints --> look mobile file
+
+        //console.log(city, uf, items)
         return response.json(points)
     }
 
@@ -73,7 +75,7 @@ class PointsController {
         // aula 02 1:33:00
 
         const point = {
-            image: 'https://images.unsplash.com/photo-1556767576-5ec41e3239ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60',
+            image: request.file.filename,
             name,
             email,
             whatsapp,
@@ -94,12 +96,16 @@ class PointsController {
         // inserir na tabela de relacionamentos
         // aula 02 1:29:00
         // criando objetos para inserir na tabela
-        const pointItems = items.map((item_id: number) => {
-            return {
-                item_id,
-                point_id,
-            }
-        });
+        // aula 05 15:00 -> agora items sao string separadas por vírgula
+        const pointItems = items
+            .split(',')
+            .map((item: string) => Number(item.trim()))
+            .map((item_id: number) => {
+                return {
+                    item_id,
+                    point_id,
+                }
+            });
 
         await trx('point_items').insert(pointItems);
 

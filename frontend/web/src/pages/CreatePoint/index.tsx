@@ -5,6 +5,7 @@ import { FiArrowLeft } from 'react-icons/fi';
 import { Map, TileLayer, Marker } from 'react-leaflet';
 import axios from 'axios';
 import { LeafletMouseEvent } from 'leaflet';
+import Dropzone from '../../components/Dropzone'
 
 import api from '../../services/api';
 
@@ -170,22 +171,43 @@ const CreatePoint = () => {
     async function handleSumbit(event: FormEvent) {
         event.preventDefault();
 
+        //console.log(selectedFile)
+        //return;
+
         const { name, email, whatsapp } = formData;
         const uf = selectedUf;
         const city = selectedCity;
         const [latitude, longitude] = selectedPosition;
         const items = selectedItems
 
-        const data = {
-            name,
-            email,
-            whatsapp,
-            uf,
-            city,
-            latitude,
-            longitude,
-            items
+        // Nao estamos mais utilizando json e sim Multi Form, por isso iremos alterar o modo de envio
+        // aula 05 38:30
+        // const data = {
+        //     name,
+        //     email,
+        //     whatsapp,
+        //     uf,
+        //     city,
+        //     latitude,
+        //     longitude,
+        //     items
+        // }
+        const data = new FormData(); // classe global do js que permite enviar dados com formato multipart/Form-data
+
+        data.append('name', name)
+        data.append('email', email)
+        data.append('whatsapp', whatsapp)
+        data.append('uf', uf)
+        data.append('city', city)
+        data.append('latitude', String(latitude))
+        data.append('longitude', String(longitude))
+        data.append('items', items.join(','))
+
+        if (selectedFile) {
+            data.append('image', selectedFile)
         }
+
+
         console.log(data)
         // agora iremos enviar os dados para persistir no banco de dados na API
         try {
@@ -196,6 +218,10 @@ const CreatePoint = () => {
             console.warn("Ocorreu um erro no cadastro", ex)
         }
     }
+
+    // PERSISTING AS IMAGENS UPLOADS NO PROJETO aula05 33:33
+    const [selectedFile, setSelectedFile] = useState<File>();
+    // mandar via props pra tag <Dropzone />
 
     //============================================================================
 
@@ -210,6 +236,9 @@ const CreatePoint = () => {
             </header>
             <form onSubmit={handleSumbit}>
                 <h1>Cadastro do <br /> ponto de coleta</h1>
+
+                {/* // aula 05 -> criando o campo de upload de imagem 26:00 */}
+                <Dropzone onFileUploaded={setSelectedFile} />
 
                 <fieldset>
                     <legend>
