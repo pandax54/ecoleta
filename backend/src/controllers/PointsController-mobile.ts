@@ -134,6 +134,20 @@ class PointsController {
             ...point,
         });
     }
+    async delete(request: Request, response: Response) {
+        const { id } = request.params
+
+        const point = await knex('points').where('id', id).first();
+
+        if (!point) {
+            return response.status(404).json({ message: "Point not found" })
+        }
+
+        await knex('points').where('id', id).delete()
+
+        return response.status(204).send("Point deleted");
+
+    }
 
 }
 

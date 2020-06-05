@@ -40,6 +40,8 @@ router.post('/points', upload.single('image'), celebrate({
 }, {
     abortEarly: false
 }), pointController.create);
+
+router.delete('/points/:id', pointController.delete)
 router.get('/points', pointController.filter);
 router.get('/points/all', pointController.index);
 router.get('/points/:id', pointController.show);
