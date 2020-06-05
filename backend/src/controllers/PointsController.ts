@@ -117,6 +117,107 @@ class PointsController {
             ...point,
         });
     }
+    async put(request: Request, response: Response) {
+
+        const { id } = request.params
+
+        const point = await knex('points').where('id', id).first();
+
+        if (!point) {
+            return response.status(404).json({ message: "Point not found" })
+        }
+
+        // aula 02 1:45:00
+        // const items = await knex('items')
+        //     .join('point_items', 'items.id', '=', 'point_items.item_id')
+        //     .where('point_items.point_id', id)
+        //     .select('items.title');
+
+
+        const {
+            name,
+            email,
+            whatsapp,
+            latitude,
+            longitude,
+            city,
+            uf,
+            items
+        } = request.body;
+
+        // update ITEMS !!! into point_items
+        // const items = await knex('items')
+        //     .join('point_items', 'items.id', '=', 'point_items.item_id')
+        //     .where('point_items.point_id', id)
+        //     .select('items.title');
+        // console.log(items)
+        const OldItems = await knex('items')
+            .join('point_items', 'items.id', '=', 'point_items.item_id')
+            .where('point_items.point_id', id)
+            .select('point_items.id')
+        // old items in table [ { id: 13 }, { id: 14 }, { id: 15 } ]
+
+        // deletar antes de acrescentar os novos items selecionados
+        OldItems.map(async (item) => {
+            await knex('point_items').where('id', item.id).delete()
+        })
+
+        console.log('updated items', items)
+
+        console.log('old items in table', OldItems)
+        // pegar o id  -> point_items e deletar e inserir novos ??
+
+
+        const trx = await knex.transaction();
+
+        // update point content
+        await trx('points').where('id', id).update({
+            image: request.file.filename,
+            name,
+            email,
+            whatsapp,
+            latitude,
+            longitude,
+            city,
+            uf
+        });
+
+        const pointItems = items
+            .split(',')
+            .map((item: string) => Number(item.trim()))
+            .map((item_id: number) => {
+                return {
+                    item_id,
+                    point_id: id,
+                }
+            });
+
+        await trx('point_items').insert(pointItems);
+
+        // aula 02 1:57:50
+        await trx.commit();
+
+        return response.json({
+            id,
+            ...point,
+        });
+    }
+    async delete(request: Request, response: Response) {
+        const { id } = request.params
+
+        const point = await knex('points').where('id', id).first();
+
+        if (!point) {
+            return response.status(404).json({ message: "Point not found" })
+        }
+
+        await knex('points').where('id', id).delete()
+
+
+        return response.status(204).send("Point deleted");
+
+    }
+
 
 }
 

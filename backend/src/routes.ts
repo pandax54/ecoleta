@@ -41,6 +41,21 @@ router.post('/points', upload.single('image'), celebrate({
     abortEarly: false
 }), pointController.create);
 
+router.put('/points/:id', upload.single('image'), celebrate({
+    body: Joi.object().keys({
+        name: Joi.string().required(),
+        email: Joi.string().required().email(),
+        whatsapp: Joi.number().required(),
+        latitude: Joi.number().required(),
+        longitude: Joi.number().required(),
+        city: Joi.string().required(),
+        uf: Joi.string().required().max(2),
+        items: Joi.string().required(),
+    })
+}, {
+    abortEarly: false
+}), pointController.put);
+
 router.delete('/points/:id', pointController.delete)
 router.get('/points', pointController.filter);
 router.get('/points/all', pointController.index);
