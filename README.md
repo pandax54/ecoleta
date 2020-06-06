@@ -1,6 +1,6 @@
 
 <img style="display: block; margin: 20px auto" src="https://i.imgur.com/Qi7cuAX.png">
-----------
+
 
 ![stacks](https://img.shields.io/static/v1?label=Nodejs&message=v12.17.0&color=brightgreen)
 ![stacks](https://img.shields.io/static/v1?label=React&message=v16.13.1&color=brightgreen)
@@ -32,6 +32,9 @@
 - [React Native](https://github.com/facebook/react-native)
 - [React-Leaflet](https://github.com/PaulLeCam/react-leaflet)
 - [Expo](https://github.com/expo/expo)
+- [Knex](http://knexjs.org/)
+- [Multer](https://www.npmjs.com/package/multer)
+- [SQLite3](https://www.sqlite.org/index.html)
 
 ## :hammer: Tools
 - [Visual Studio Code](https://code.visualstudio.com)
@@ -65,14 +68,24 @@ Para iniciar o **Frontend** do React utilize os comandos:
 
 Assim que o processo terminar, automaticamente será aberta no seu navegador a página `localhost:3333`.
 
+![](https://i.imgur.com/R8KgKaH.gif)
+
 
 #### Mobile
 
 Para ver a aplicação mobile com o React Native, primeiro é necessário colocar o IP do seu servidor (ou computador) no arquivo `src/services/api.js`, e depois executar os comandos:
 
 ![](https://i.imgur.com/iSJgMsL.png)
+![](./Screen_2.gif)
+![](./Screen_3.gif)
 
 Conecte seu emulador, ou teste o aplicativo por `LAN`: baixe o aplicativo *Expo* da Play Store ou App Store e em seguida escaneie o código QR.
+
+<div style="display: flex">
+<img style="display: block; margin: 20px auto; width: 45%; height: auto" src="https://i.imgur.com/mLF2PAX.gif">
+<img style="display: block; margin: 20px auto; width: 45%; height: auto" src="https://i.imgur.com/3oh12Py.gif">
+</div>
+<img style="display: block; margin: 20px auto; width: 45%; height: auto" src="https://i.imgur.com/3oh12Py.gif">
 
 ---
 ###### Developed on Next Level Week from [RocketSeat](https://rocketseat.com.br) :rocket:.
