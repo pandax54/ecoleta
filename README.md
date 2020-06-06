@@ -1,4 +1,3 @@
-
 <img style="display: block; margin: 20px auto" src="https://i.imgur.com/Qi7cuAX.png">
 
 
@@ -68,24 +67,19 @@ Para iniciar o **Frontend** do React utilize os comandos:
 
 Assim que o processo terminar, automaticamente será aberta no seu navegador a página `localhost:3333`.
 
-![](https://i.imgur.com/R8KgKaH.gif)
-
+![](https://i.imgur.com/iSJgMsL.png)
+![](./Screen_1.gif)
+![](./Screen_2.gif)
+![](./Screen_3.gif)
 
 #### Mobile
 
 Para ver a aplicação mobile com o React Native, primeiro é necessário colocar o IP do seu servidor (ou computador) no arquivo `src/services/api.js`, e depois executar os comandos:
 
-![](https://i.imgur.com/iSJgMsL.png)
-![](./Screen_2.gif)
-![](./Screen_3.gif)
-
 Conecte seu emulador, ou teste o aplicativo por `LAN`: baixe o aplicativo *Expo* da Play Store ou App Store e em seguida escaneie o código QR.
 
-<div style="display: flex">
-<img style="display: block; margin: 20px auto; width: 45%; height: auto" src="https://i.imgur.com/mLF2PAX.gif">
-<img style="display: block; margin: 20px auto; width: 45%; height: auto" src="https://i.imgur.com/3oh12Py.gif">
-</div>
-<img style="display: block; margin: 20px auto; width: 45%; height: auto" src="https://i.imgur.com/3oh12Py.gif">
+<img src="./RPReplay_1.gif" width="420.44" height="746.83" style="margin-right: 10px"><img src="./RPReplay_2.gif" wwidth="420.44" height="746.83">
+
 
 ---
 ###### Developed on Next Level Week from [RocketSeat](https://rocketseat.com.br) :rocket:.
