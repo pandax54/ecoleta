@@ -1,0 +1,56 @@
+
+import { Roboto_400Regular } from '@expo-google-fonts/roboto';
+import { Ubuntu_700Bold, useFonts } from '@expo-google-fonts/ubuntu'
+
+  // aula 04 32:00
+  const [fontsLoaded] = useFonts({
+    Roboto_400Regular,
+    Ubuntu_700Bold
+  });
+
+
+    if (!fontsLoad) {
+    return <AppLoading />
+  }
+
+
+expo install @expo-google-fonts/inter expo-font
+expo install @expo-google-fonts/ubuntu @expo-google-fonts/roboto expo-font 
+
+
+npm cache clear --force
+para limpar o cache do expo: expo start -c
+
+https://www.youtube.com/watch?v=Vl3CPNN788Q
+
+https://docs.expo.io/guides/using-custom-fonts/
+
+
+
+        <ImageBackground
+            style={styles.container}
+            source={homeBackground}
+            imageStyle={{ width: 264, height: 368 }}>
+            <View style={styles.main}>
+                <Image source={logo} />
+                <Text style={styles.title}>Seu marketplace de coleta de resíduo</Text>
+                <Text style={styles.description}>Ajudamos pessoas a encontrarem pontos de coletas de forma eficiente</Text>
+            </View>
+            <View style={styles.footer}>
+                <RectButton style={styles.button} onPress={() => { }}>
+                    <View style={styles.buttonIcon}>
+                        >
+                    </View>
+                    <Text style={styles.buttonText}>Entrar</Text>
+                </RectButton>
+
+            </View>
+        </ImageBackground>
+
+
+
+Steve Bannon
+
+        “The hypnotic power of repetition leads politicians to believe the falsehoods they have themselves put into circulation”. Mentiras, burrices, se vc se fecha em um mundinho onde todo mundo repete as mesmas mentiras e burrices, vc subitamente está certo sempre. E feliz.
+
+
